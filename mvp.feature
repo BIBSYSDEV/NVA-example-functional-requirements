@@ -3,6 +3,7 @@
 
 Feature: MVP features for NVA
 
+  @done
   @351
   Scenario: A user logs in with Feide for the first time
     Given that the user has valid Feide credentials
@@ -21,6 +22,7 @@ Feature: MVP features for NVA
     And they see their name in the Menu
     And they see the Connect Author dialog
 
+  @done
   @wip
   Scenario: User connects Author
     Given that the user logs in with Feide for the first time
@@ -28,6 +30,7 @@ Feature: MVP features for NVA
     Then the Connect Author dialog closes
     And they see the Connect Orcid dialog
 
+  @done
   Scenario: A user logs in with Feide not for the first time
     Given that the user has valid Feide credentials
     And they have logged in with Feide before
@@ -40,6 +43,7 @@ Feature: MVP features for NVA
     And they see their name in the Menu
     And they see the Connect ORCID dialog
 
+  @done
   Scenario: A user is already authenticated with Feide (single sign on)
     Given that the user is already authenticated with Feide
     When they navigate to the Start page
@@ -49,6 +53,7 @@ Feature: MVP features for NVA
     Then they are redirected back to the Start page
     And they see their name in the Menu
 
+  @done
   @353
   Scenario: A user logs out
     Given that the user is already logged in
@@ -56,6 +61,7 @@ Feature: MVP features for NVA
     And they click Log out
     Then they are logged out of the NVA application
 
+  @done
   @217
   Scenario Outline: User with no Feide ID in ARP sees matching Author identities
     Given that Kim Smith has a valid Feide ID and password
@@ -73,6 +79,7 @@ Feature: MVP features for NVA
       | Kim Smith | Smith, Kim    | Some Other Title  |
       | Kim Smith | Smith, Kim F. | Yet Another Title |
 
+  @done
   Scenario: User has no matching Author identity
     Given that Sandy Jones has a valid Feide ID and password
     And they do not have a Feide ID in their ARP entry
@@ -81,6 +88,7 @@ Feature: MVP features for NVA
     Then they see the Create Authority dialog
     And that their name is selected
 
+  @done
   @646
   Scenario: Creator creates own Author identity
     Given that Sandy Jones has a valid Feide ID and password
@@ -90,6 +98,7 @@ Feature: MVP features for NVA
     Then they see the Create New Authority dialog
     And that their name is selected
 
+  @done
   @219
   Scenario: User updates an Author identity
     Given that a user with no Feide ID in ARP sees matching Author identities
@@ -103,6 +112,7 @@ Feature: MVP features for NVA
   # This last step hides cases where an ORCID already exists in ARP
   # There should also be a possibility to ask for support if there is a problem in the data, i.e. there are multiple registered Author identities for a single Author
 
+  @done
   @384
   Scenario: User creates an Author identity
     Given that a user has no matching Author identity
@@ -137,6 +147,7 @@ Feature: MVP features for NVA
     And they see an Expansion panel for Link to publication
     And they see an Expansion panel for Suggestions from ORCID
 
+  @done
   @228
   Scenario: Creator begins registering with a Link with direct data from Datacite/Crossref
     Given Creator begins registering a Publication
@@ -215,6 +226,7 @@ Feature: MVP features for NVA
     And they see Next is enabled
     And they see Save is enabled
 
+  @done
   @453
   Scenario: Creator navigates to Reference tab
     Given Creator begins registering a Publication in the Wizard
@@ -309,6 +321,7 @@ Feature: MVP features for NVA
     And they see Search box for "Series title"
     And they see the NVI evaluation is Not NVI Applicable
 
+  @done
   @417
   Scenario: User navigates to Contributor tab
     Given Creator begins registering a Publication in the Wizard
@@ -322,6 +335,7 @@ Feature: MVP features for NVA
     And they see Next is enabled
     And they see Save is enabled
 
+  @done
   @275
   Scenario: User navigates to Files and Licenses tab
     Given Creator begins registering a Publication in the Wizard
@@ -341,6 +355,7 @@ Feature: MVP features for NVA
   #    And they see Next is enabled
   #    And they see Save is enabled
 
+  @done
   @277
   Scenario: Creator navigates to Submission tab
     Given Creator begins registering a Publication in the Wizard
@@ -357,6 +372,7 @@ Feature: MVP features for NVA
     And they see Save is enabled
     And they see Publish is enabled
 
+  @done
   @653
   Scenario: Creator sees validation errors
     Given Creator begins registering a Publication in the Wizard
@@ -404,6 +420,7 @@ Feature: MVP features for NVA
   #  When they click Start
   #  Then they see the tab Description
 
+  @done
   @388
   Scenario: Creator sees a Publication based on a Link is saved
     Given Creator begins registering with a Link
@@ -445,6 +462,7 @@ Feature: MVP features for NVA
     And they see the Delete button in the File Detail box is enabled
 
   # Dette er av typen "Publication in Journal"
+  @done
   Scenario: User verifies initial metadata on the Reference tab for a registration
     Given Creator begins registering with a Link with direct data from Datacite/CrossRef
     And the Publication is a Publication in Journal
@@ -484,6 +502,7 @@ Feature: MVP features for NVA
       | Possible mapped value for License, Archiving policy and Unit agreement |
       | Possible file for upload  (Filename, File size)                        |
 
+  @done
   @230
   Scenario: User adds NPI data for a Publication
     Given Creator begins registering a Publication in the Wizard
@@ -512,12 +531,14 @@ Feature: MVP features for NVA
     And they see that Project Information box Delete button is enabled
     And they see a Autosearch dropdown for Project above the Project Information box
 
+  @done
   @445
   Scenario: Creator searches for a Project in the Autosearch dropdown for Project
     Given Creator sees Autosearch dropdown for Project
     When they enter a project name in the search box
     Then they see a list of clickable results
 
+  @done
   @446
   Scenario: Creator selects Project from Autosearch dropdown for Project
     Given Creator searches for a Project in the Autosearch dropdown for Project
@@ -530,6 +551,7 @@ Feature: MVP features for NVA
     And they see that Project Information box Delete button is enabled
     And they see a Autosearch dropdown for Project above the Project Information box
 
+  @done
   @233
   Scenario: User sees journal title suggestion from a Link
     Given Creator begins registering with a Link with direct data from Datacite/CrossRef
@@ -538,6 +560,7 @@ Feature: MVP features for NVA
     When they click the Reference Tab
     Then they see the Autosearch dropdown for Journal contains a journal title
 
+  @done
   Scenario: Creator sees Publication Channel Register information for a Journal
     Given Creator sees journal title suggestion from a Link
     When they click the Autosearch dropdown for Journal
@@ -555,6 +578,7 @@ Feature: MVP features for NVA
   # There is a match between all ORCIDs from the DOI data document and (a subset of) the Cristin Project DB Project data document ORCIDs
   # All of the ORCIDs are in ARP
 
+  @done
   @418
   Scenario: Creator opens the Add Author dialog
     Given Creator navigates to Contributor tab
@@ -573,6 +597,7 @@ Feature: MVP features for NVA
       | the Author's last publication |
       | Affiliation(s)                |
 
+  @done
   @419
   Scenario: User adds an Author to the Author list
     Given they see Author search results
@@ -581,6 +606,7 @@ Feature: MVP features for NVA
     Then they see the dialog is closed
     And they see the Author is shown in the Authors section in the Contributor tab
 
+  @done
   @784
   Scenario: Creator finds no matching Author in Author Search
     Given Creator opens the Add Author dialog
@@ -596,6 +622,7 @@ Feature: MVP features for NVA
     Then they see a field for Author name
     And they see an Autosearch box for Affiliation
 
+  @done
   @788
   Scenario: Creator creates a new Author in the Author dialog
     Given that they see New Author in the Author dialog
@@ -607,7 +634,7 @@ Feature: MVP features for NVA
 
   #Legg til Scenario for delete, edit, move, korresponding
 
-  @
+  @done
   Scenario: User sees Corresponding Author Email field
     Given Creator begins registering with a Link with direct data from Datacite/CrossRef
     And they are on the Contributors tab
@@ -627,12 +654,14 @@ Feature: MVP features for NVA
   # agreement, which entails that Unit has negotiated a contract for Norwegian corresponding authors
   # In all other cases, a License-picker is provided
 
+  @done
   @276
   Scenario: Creator uploads files for a Publication
     Given Creator navigates to Files and Licenses
     When they drag and drop a file into the File drag-and-drop area
     Then they see upload information
 
+  @done
   Scenario Outline: Creator selects values for uploaded files
     Given Creator uploads files for a Publication
     When they set values for <Field>
@@ -645,6 +674,7 @@ Feature: MVP features for NVA
       | License             | CC-BY 4.0        |
       | Delayed publishing | 2032-12-21       |
 
+  @done
   @455
   Scenario: Creator selects Administrative contract for uploaded files
     Given Creator uploads files for the Publication
@@ -665,12 +695,14 @@ Feature: MVP features for NVA
     And they see the Publication confirmation message
 
   # Access to the different menu items
+  @done
   @244
   Scenario: User sees non-logged-in menu
     Given that the user is not logged in
     When they look at any page in NVA
     Then they see the Log in button
 
+  @done
   @345
   Scenario: User sees a menu when logged in
     Given that the user is logged in
@@ -813,6 +845,7 @@ Feature: MVP features for NVA
     Then they see the Add Institution dialog is closed
     And they see the new Institution and Subunit and Subsubunit and Subsubsubunit in My Profile
 
+  @done
   @383
   Scenario: User removes an ORCID connection from My Profile
     Given user opens the page My Profile
@@ -820,6 +853,7 @@ Feature: MVP features for NVA
     Then they see a confirmation that the ORCID is removed
 
   # Menuitems for Creator
+  @done
   Scenario: Creator opens New Registration
     Given that the user is logged in as Creator
     When they click the menu item New Registration
@@ -829,6 +863,7 @@ Feature: MVP features for NVA
       | Link                   |
       | Suggestions from ORCID |
 
+  @done
   @354
   Scenario Outline: Creator opens My Publications
     Given the user is logged in as Creator
@@ -848,6 +883,7 @@ Feature: MVP features for NVA
       | Rejected |
 
   # Actions from Page : My Publications (Edit)
+  @done
   @355
   Scenario: Creator opens an item in My Publication list
     Given that the user is logged in as Creator
