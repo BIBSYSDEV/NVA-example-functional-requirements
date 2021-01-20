@@ -12,4 +12,5 @@ Feature: Application Administrator adds an Institution
       | Short display name            |
       | Archive name                  |
       | Feide Organization ID         |
+      | ROR ID                        |
     And a button Create that is enabled
