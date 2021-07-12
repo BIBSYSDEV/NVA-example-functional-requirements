@@ -1,5 +1,4 @@
 Feature: User My Projects
-    Background: A User is logged in
 
     In order to achive a low mental load on the user
     I want to achive a high degree of recognition between the desing of My Projects and My Publications - both accessible from the top menu
@@ -7,14 +6,19 @@ Feature: User My Projects
     In order to know of all project where I'm involved
     I want to see lists of active and concluded project, and have access to manage those I'm responsible of
 
-    In order to see all details of a project
-    I want to be able to navigate to the landing page of a project
+    In order to keep projects I'm responsible of up to date
+    I want easy access to manage those 
 
-    In order to create new projects
-    I want to be able to create new projects
+    In order to see all details of a project
+    I want easy access to the landing page 
 
     In order to locate the project in mind
-    I want to be able to search in My Projects
+    I want easy access to search in My Projects
+
+    In order to create new projects
+    I want easy access to create new projects
+
+    Background: A User is logged in
 
     @2874a
     Scenario: User opens My Projects
@@ -54,9 +58,8 @@ Feature: User My Projects
         Given User opens My Projects
         And User has "<Role>" on the Project
         And the project lacks an Approval of type "REK"
-        # A "REK" Approved project is a Health Project. 
         # See health_related_projects.feature for details.
-        When they click the Edit Button 
+        When they click the Edit Button on a project
         Then they see the Project in the Project Wizard
         Examples:
             | Role                  |

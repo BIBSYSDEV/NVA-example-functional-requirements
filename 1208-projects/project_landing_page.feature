@@ -35,8 +35,7 @@ Feature: Project Landing Page
 
     @2630
     Scenario: User opens Landing Page for Project
-        Given A Anonymous User uses a browser
-        When they open a Project Landing Page
+        When An Anonymous User open a Project Landing Page
         Then they see:
             | Project Title                |
             | Project Owner Institution    |
@@ -117,14 +116,16 @@ Feature: Project Landing Page
 
     @2904
     Scenario Outline: User Publish a Draft Project
-        Given User opens Landing Page for Project
-        And the Project status is Draft
+        Given User opens Landing Page for a Draft Project
+        And it has all required fields:
+            | Title                    |
+            | Coordinating Institution |
+            | Start Date               |
+            | Project Manager          | 
         And User has role "<Role>" in the project
-        And the project has all required fields
-        And the User see the enabled Publish Button
         When the User clicks on the Publish Button
         Then the project status is Published 
-        And the Project has a public accessible Landing Page
+        And the Landing Page is public accessible 
         Examples:
             | Role            |
             | Curator         |
