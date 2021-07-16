@@ -3,66 +3,6 @@
 
 Feature: MVP features for NVA
 
-  @351
-  Scenario: A user logs in with Feide for the first time
-    Given that the user has valid Feide credentials
-    And they have NOT logged in with Feide before
-    And they are on the Start page
-    When they click Log in
-    And they are redirected to Feide
-    And they enter their Feide credentials
-    And they approve sharing of data with the NVA application regarding
-      | Username            |
-      | Email address       |
-      | Real name           |
-      | Affiliation         |
-      | Organization number |
-    Then they are redirected back to the Start page
-    And they see their name in the Menu
-    And they see the Connect Author dialog
-
-  @1205
-  Scenario: User connects Author
-    Given that the user logs in with Feide for the first time
-    When they click OK in the Connect Author dialog
-    Then the Connect Author dialog closes
-    And they see a confirmation dialog
-
-  @28
-  Scenario: A user is already authenticated with Feide (single sign on)
-    Given that the user is already authenticated with Feide
-    When they navigate to the Start page
-    And they click Log in
-    And they are redirected to Feide
-    And they click on the identity they wish to proceed with in the Feide interface
-    Then they are redirected back to the Start page
-    And they see their name in the Menu
-
-  @353
-  Scenario: A user logs out
-    Given that the user is already logged in
-    When they click on the Menu
-    And they click Log out
-    Then they are logged out of the NVA application
-
-  @1207
-  Scenario: User has no matching Author identity
-    Given that Sandy Jones has a valid Feide ID and password
-    And they do not have a Feide ID in their ARP entry
-    And there are no matching entries in ARP
-    When they log in
-    Then they see the Create Authority dialog
-    And that their name is selected
-
-  @646
-  Scenario: Creator creates own Author identity
-    Given that Sandy Jones has a valid Feide ID and password
-    And there are results for Sandy Jones in ARP
-    And they do not identify with one of the results
-    When they click the Create New Author Button
-    Then they see the Create New Authority dialog
-    And that their name is selected
-
   @453
   Scenario: Creator navigates to Resource Type tab
     Given Creator begins registering a Publication in the Wizard
@@ -126,19 +66,8 @@ Feature: MVP features for NVA
     Then they see the Publication Channel Information box
     And they see the File upload widget
 
-  #    Then they see information about the Open Access Status for the Journal which they selected on the Reference page based in information from the Publication Channel Register
-  #    And they see the Sherpa Romeo data for the Journal which they selected on the Reference page based in information from the Publication Channel Register
-  #    And they see that the journal allows publication of the article with the license CCBY 4.0 based in information from the Publication Channel Register
-  #    And they can upload files for the Publication
-  #    And they see the tab Description is clickable
-  #    And they see the tab Resource Type is clickable
-  #    And they see the tab Contributor is clickable
-  #    And they see the tab Files and Licenses is selected
-  #    And they see the tab Submission is clickable
-  #    And they see Next is enabled
-  #    And they see Save is enabled
-
   @277
+  @outdated
   Scenario: Creator navigates to Submission tab
     Given Creator begins registering a Publication in the Wizard
     When they navigate to the Submission tab
@@ -164,12 +93,6 @@ Feature: MVP features for NVA
       | References: Subtype, journal, peer review is mandatory |
       | Contributors: Minimum one contributor required         |
       | Files: Minimum one file required                       |
-
-  #Scenario: User start Wizard registration by uploading a file
-  #  Given Creator begins registration by uploading a file
-  #  When they click Start
-  #  Then they see the tab Description
-
   @386
   Scenario: Creator begins registration by using suggestions from ORCID
     Given Creator begins registering a Publication
@@ -184,11 +107,6 @@ Feature: MVP features for NVA
       | DOI           |
     And they see that the radio for the first entry is selected
     And they see Start is enabled
-
-  #Scenario: User start Wizard registration by using suggestions from ORCID
-  #  Given Creator begins registration by using suggestions from ORCID
-  #  When they click Start
-  #  Then they see the tab Description
 
   @432
   Scenario: Creator verifies file upload for a registration based on uploading a file
@@ -299,14 +217,6 @@ Feature: MVP features for NVA
     And they see that the Information box for Journal contains an Academic level
     And they see that the Information box for Journal contains a Delete button
 
-  # Happy day scenario for a DOI-sourced Academic Publication
-  # The DOI dereferences to a data document that contains ORCIDs for every Contributor
-  # The DOI dereferences to a data document that contains a Grant ID
-  # The Grant ID is available in Cristin Project DB
-  # Cristin Project DB data document contains the ORCIDs for project members
-  # There is a match between all ORCIDs from the DOI data document and (a subset of) the Cristin Project DB Project data document ORCIDs
-  # All of the ORCIDs are in ARP
-
   @418
   Scenario: Creator opens the Add Author dialog
     Given Creator navigates to Contributor tab
@@ -341,8 +251,6 @@ Feature: MVP features for NVA
     Then they see a field for Author name
     And they see an Autosearch box for Affiliation
 
-  #Legg til Scenario for delete, edit, move, korresponding
-
   @1213
   Scenario: Creator sees Corresponding Author Email field
     Given Creator begins registering with a Link with direct data from Datacite/CrossRef
@@ -357,12 +265,6 @@ Feature: MVP features for NVA
     And they blur out of the Corresponding Author Email field
     And they click the Summary tab
     Then they see that the Author is registered as the Corresponding Author for the Publication
-
-  # Corresponding Author is not in fact present in the Datacite data, but probably will be soon
-
-  # Important note about the "License": This assumes that the article is published in a journal that has a special Unit
-  # agreement, which entails that Unit has negotiated a contract for Norwegian corresponding authors
-  # In all other cases, a License-picker is provided
 
   @276
   Scenario: Creator uploads files for a Publication
@@ -401,44 +303,6 @@ Feature: MVP features for NVA
     When they click Publish
     Then they are redirected to the Public Page for Publication
     And they see the Publication confirmation message
-
-  @881
-  Scenario Outline: Anonymous User View Public Page for Publication
-    Given the Anonymous User has opened NVA
-    And they see the <Page>
-    When they click to view a Publication
-    Then the Public Page for Publication is opened
-    And they see page fields for
-      | Title                  |
-      | Abstract               |
-      | NPI                    |
-      | Keywords               |
-      | Publication date       |
-      | Primary language       |
-      | Projects               |
-      | Publication type       |
-      | Publication subtype    |
-      | Values per sybtype     |
-      | Clickable Contributors |
-      | Clickable emails       |
-      | Affiliations           |
-      | File download link     |
-      | ORCID                  |
-      | DOI link               |
-      | Licence                |
-      | <Licence link>         |
-
-    Examples:
-      | Page        | Licence link                                                            |
-      | Start Page  | https://creativecommons.org/licenses/by/4.0/deed.no                     |
-      | Public Page | https://dlr.unit.no/licenses/ntnu-alle-rettigheter-forbeholdt-forfatter |
-
-  @1236
-  Scenario: A user navigates to the Public Page for Publication with a Draft DOI
-    Given that a user navigates to the Public Page for Publication
-    And the Publication is published
-    And the Publication has a Draft DOI
-    Then the Public Page for Publication is displayed without the Draft DOI
 
   # Access to the different menu items
   @344
@@ -681,113 +545,6 @@ Feature: MVP features for NVA
       | ORCID                                                                             |
       | List of publications where the user is a contributor and with status is Published |
 
-  @1247
-  Scenario: Creator Edits a comment on a DOI request
-    Given that the Creator Opens a DOI request entry from My Worklist
-    And the request has status Requested
-    When they click the Edit button on a DOI request
-    Then they can edit the comment
-    And they see a Save button
-
-  @1248
-  Scenario: Creator Saves a comment on a DOI request
-    Given that the Creator Edits a comment on a DOI request
-    When they Save the comment
-    Then the comment is saved
-    And they see a confirmation message
-    And they can no longer edit the comment
-
-  @1250
-  Scenario: Creator closes a DOI request
-    Given that the Creator Opens a DOI request entry from My Worklist
-    When they click the Close button
-    Then they see the Worklist
-
-  @1251
-  Scenario: Creator opens a Publication with a DOI request
-    Given that the Creator Opens a DOI request entry from My Worklist
-    When they click the Edit publication button
-    Then the Publication is opened in the Wizard on the first tab
-
-  @1240
-  Scenario: Creator deletes a DOI request
-    Given that the Creator opens My Worklist
-    When they click the Delete button on a DOI request
-    Then the request is deleted from their Worklist
-    And the request is deleted from the Worklist of their Curator
-    And the Public Page for Publication has an enabled "Request DOI" button
-
-  @1242
-  Scenario: Request/Draft Doi buttion is disabled for Publications with existing DOI
-    Given that the Creator navigates to the Public Page for Publication
-    And they are the Owner of this Publication
-    And the Publication has a DOI
-    When they see the Status Bar
-    Then they see that the Request/Draft DOI button is disabled
-  # a Publication may have more then one DOI,
-  # but NVA is only source for one DOI for each Publication
-
-  @1231
-  Scenario: Owner navigates to the Public Page for Publication for published publication without DOI
-    Given that the Creator navigates to the Public Page for Publication
-    And they are the Owner of this Publication
-    And the Publication has no DOI
-    When they see the Status Bar
-    Then they see buttons for "Request a DOI" and "Edit Publication"
-
-  @511
-  Scenario: Owner opens the "Request a DOI" dialog
-    Given that a Creator navigates to the Public Page for Publication for published publication without DOI
-    And they are the Owner of this Publication
-    When they click the "Request a DOI" button
-    Then the "Request a DOI dialog" is opened
-    And they see fields for Message
-    And they see a "Send Request" button
-
-  @1232
-  Scenario: Owner navigates to the Public Page for Publication and requests a DOI
-    Given that the Creator navigates to the Public Page for Publication for published publication without DOI
-    And they are the Owner of the Publication
-    And open "Request a DOI" dialog
-    And optional add a message to the Curator
-    When the user click the Send Button
-    Then the Public Page for Publication is displayed
-    And the "Request a DOI" button is renamed to "DOI pending" and is disabled
-    And the request is listed in User Worklist
-    And the request is listed in Curator Worklist
-
-  @1233
-  Scenario: Owner navigates to the Public Page for Publication for unpublished publication without DOI
-    Given that the Owner view Public Page for Publication for publication
-    And the publication is not Published
-    And the publication has no DOI
-    When they look at the Status Bar
-    Then they see buttons for Draft a DOI and Edit publication
-
-  @1234
-  Scenario: Owner drafts a DOI for an unpublished Publication
-    Given that the Owner View Public Page for Publication for unpublished publication without DOI
-    And they are the Owner of the Publication
-    When they click the "Draft a DOI" button
-    Then the Public Page for Publication is displayed
-    And the "Draft a DOI" button is renamed to "DOI pending" and is disabled
-    And the Draft DOI is added to the metadata
-    And the Public Page for Publication contains the Draft DOI
-    And the Draft DOI is not a link
-  #Draft DOIs are not acknowledged by the resolving mechanisms (Handle-system)
-
-  @1235
-  Scenario: Owner navigates to the submission tab and publish a Publication with a drafted DOI
-    Given that the Owner navigates to Submission tab
-    And the Publication has status Draft
-    And the Publication has a Draft DOI
-    When the Owner clicks the publish button
-    Then the Public Page for Publication is displayed
-    And the "Request a DOI" button is still named "DOI pending" and is disabled
-    And the Public Page for Publication lists the Draft DOI
-    And the Draft DOI is still not a link
-    And the DOI request is listed in the Owners work list
-    And the DOI request is listed in the Curators work list
 
   # Actions from Page : My Worklist
   @1252
@@ -806,40 +563,6 @@ Feature: MVP features for NVA
       | Send answer       |
       | Go to publication |
       | Archive           |
-
-  @358
-  Scenario: Curator opens a Publication from a DOI Request Worklist Item
-    Given that a Curator views details of a Worklist item
-    And the item is a DOI request
-    When they click "Go to Publication"
-    Then they see the Publication is opened in the Wizard
-    And they see the Submission tab
-    And they see the Create DOI button is enabled
-    And they see the Decline DOI button is enabled
-
-  @512
-  Scenario: A Curator approves a DOI request
-    Given that a Curator opens a Publication from a DOI Request Worklist Item
-    When they click Create DOI
-    Then they see the Public Page for Publication
-    And the Publication has a DOI Link
-    And the Request DOI item is marked as Approved in their Worklist
-
-  @1243
-  Scenario: A Curator enter a decline-comment on a DOI request
-    Given that a Curator opens an item in the Worklist
-    And the item is a DOI request
-    When they click Decline DOI
-    Then they may enter a decline-comment
-
-  @1244
-  Scenario: A Curator declines a DOI request
-    Given that a Curator enters a decline comment on a DOI request
-    When they click Save
-    Then the DOI request is marked as "Declined"
-    And the request in the User's Worklist is updated to "Declined"
-    And the request is removed from the Curator's Worklist
-    And they see their Worklist
 
   # Menuitems for Administrator
   @359

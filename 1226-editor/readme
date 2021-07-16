@@ -1,0 +1,20 @@
+The Editor is the main custodian of the businss aspects of the Institutional repository. The Administrator is his technical counterpart. 
+An Institution must have both roles assigned to be operational.
+
+Any editor is the Editor
+The Editor may grant the Editor role to other Users, at the same Institution. But, there is no build in support to share responsibibility between Editors. The Editors decide how many Curators the Institution needs. 
+
+Editor is the teamlead of the Curators
+A Curators default responsibility is all Users at the Institution, but the Editor may down-Scope it to any formal part of the Institusion and thus reduce the group of Users this Curator is responsible to handle. Any unresolved conflicts or requests from own Users, or conflicts involving Users from other Institutions, might be an Editors' task. It is adviced that the Editor User is alos assigned the Curator role.
+
+How many Editors and Curators?
+Smaller Institution may deem one User to be both the Editor and the Curator. A larger Institusion may need a handfull of Curators. A large Institution may deem it nessesery to define each second-to-top level Curator an Editor and each Editor may have several Curators. Some reasearch teams may create enoungh work to need it's own Curators.
+
+Use of Vocabularys
+Some Institutions wish to arrange resourses into classes or categories according to shared qualities or characteristics. To accommodate this goal the Editor may decide which vocabularys the Users may use in the Registration Wizard. Vocabularys are field spesific, so Institution with a strong field focus may wish that all Users uses the same vocabulary. Others may offer the User a selection of optional vocabularys.
+
+Access to publish
+Any log in User can publish a resource, unless the Editor have reduced this to either: 
+Restrict all publishing, demanding a Curator to review even publication of metadata
+Or Users may publish metadata, but impose a temporly embargo on any files untill a Curator have review ther content and there lisesens.
+The Editor can adjust the restrictions to only cover registration types that is of interest for gaining NVI points.

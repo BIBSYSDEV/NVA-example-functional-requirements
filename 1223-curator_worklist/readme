@@ -1,0 +1,41 @@
+The Worklist is the Curators main tool to keep an overview of Requests from the Users. Each request is a part of a Resource (drafted or published). All Curators have access to the Worklist and share responsibillity to answer Requests from Users. 
+
+Curators Scope
+The Editor may have (down-) Scope a Curators responsibiblity to any formal part of the Institusion and thus reduce the group of Users this Curator is responsible to handle. The Curator may override this Scope to view and assist the other Curators (at the same Institution).
+
+Search the Worklist
+The Worklist offer a Seach that enable the Curator to locate Request, regardless of Type, but Results are viewed by Types. The search results may be filterd on the requests status.
+
+The worklist has four types of requests:
+    Approval:
+        - The Editor decide who can publish and how it is done
+        - The Curator may have to approve a publication
+    Support:
+        - The User may request support from a Curator from any steps in the registration flow
+    DOI:
+        - The User may request a DOI on any published registration (the Curator, is a User, and may also request a DOI)
+        - The Curator views the content and decide if a DOI is apropriate and may initiate a dialog, decline the request or mint a DOI.
+        - The User may mint a draft DOI, on a draft (unpublished) registration. If the registration is published, then a DOI request is automaticly sendt.
+    Ownership:
+        - Each registration is owned by a User and his active institution affiliation decide the owning institution.
+        - The active institution affiliation is decided by the log in method (current Feide IDP).
+        - Curator at the current owning institution decide if ownerhip should be granted or not in the two cases:
+            - Any authenicated User can claim ownership to any registration.
+            - Any owner can give ownership to any known User.
+
+The Worklist is described by following feature files:
+        my_worklist:
+            - Opens the Worklist with the Curators scope at the Institution
+            - Shows the first type of requests that has status New, or the Approval requests
+            - Curator can handle requsts of all types
+            - When the User opens a request, it gets Owned by this Curator. This is visible to other Curators.
+            - A Curator may view a request that is Owned by other.
+            - If a Curator handles a request that is Owned by someone else, they automaticly claims Ownership of the request.
+        approval_requests:
+            - Curator can read the request, review the registration and update it, start a dialog with the User or approv publication as it is.
+        support_requests:
+            - Curator can read the request, review the registration and update it, start a dialog with the User or delete the request.
+        doi_requests:
+            - 
+        ownership_request:
+            - Curator can read the request, review the registration and update it, start a dialog with the User or delete the request.
